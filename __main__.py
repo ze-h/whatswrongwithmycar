@@ -4,19 +4,20 @@ import sys
 
 class Ui_MainWindow(object): 
 
-	def setupUi(self, MainWindow): 
-		MainWindow.resize(600, 300) 
+	def setupUi(self, MainWindow : QtWidgets.QMainWindow): 
+		MainWindow.resize(600, 150)
+		MainWindow.setFixedSize(600, 150)
 		self.centralwidget = QtWidgets.QWidget(MainWindow) 
 		
 		# adding pushbutton 
 		self.pushButton = QtWidgets.QPushButton(self.centralwidget) 
-		self.pushButton.setGeometry(QtCore.QRect(200, 150, 200, 28)) 
+		self.pushButton.setGeometry(QtCore.QRect(200, 75, 200, 28)) 
 
 		# adding signal and slot 
 		self.pushButton.clicked.connect(self.changelabeltext) 
 	
 		self.label = QtWidgets.QLabel(self.centralwidget) 
-		self.label.setGeometry(QtCore.QRect(100, 90, 400, 20))
+		self.label.setGeometry(QtCore.QRect(100, 75, 400, 20))
 
 		# keeping the text of label empty before button get clicked 
 		self.label.setText("")	 
