@@ -42,7 +42,7 @@ class Ui_MainWindow(object):
 		self.pushButton.hide()
 
 if __name__ == "__main__":
-	download_file(get_image_url(get_wiki_page("Donald Trunp")))
+	download_file(get_image_url(get_wiki_page("nissan cube")))
 	exit()
 	app = QtWidgets.QApplication(sys.argv) 
 	MainWindow = QtWidgets.QMainWindow() 

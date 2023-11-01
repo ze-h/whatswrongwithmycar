@@ -32,12 +32,16 @@ def get_image_url(res: dict) -> str:
         nurl += url.split('/')[i] + "/"
     return nurl[0:-1].replace("/thumb", "")
 
-def download_file(url: str) -> int:
+def download_file(url: str) -> str:
     headers = {
     'Authorization': wiki_key,
     'User-Agent': 'whatswrongwithmycar'
     }
-    c = requests.get(url=url, headers=headers).content
-    fn = url.split('/')[-1]
+    try:
+        c = requests.get(url=url, headers=headers).content
+    except(requests.exceptions.ConnectionError):
+        return None
+    fn = url.split('/')[-1].replace("%", "")
     with open(fn, mode="wb") as file:
         file.write(c)
+    return fn
