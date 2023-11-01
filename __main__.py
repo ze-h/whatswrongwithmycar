@@ -1,4 +1,5 @@
 import lib.sample as sample
+from lib.fetch import *
 from PyQt5 import QtCore, QtGui, QtWidgets 
 import sys 
 
@@ -40,7 +41,9 @@ class Ui_MainWindow(object):
 		# after button get clicked. 
 		self.pushButton.hide()
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
+	download_file(get_image_url(get_wiki_page("Donald Trunp")))
+	exit()
 	app = QtWidgets.QApplication(sys.argv) 
 	MainWindow = QtWidgets.QMainWindow() 
 	ui = Ui_MainWindow() 
