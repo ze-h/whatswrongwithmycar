@@ -5,9 +5,13 @@ import requests
 vpic = "https://vpic.nhtsa.dot.gov/api/"
 wiki_key = open("./lib/keyring/wikipedia", 'r').read()
 
-def get_car(v) -> list:
-    requests.get(url=(vpic + ""))
-    return []
+def get_car(v: str) -> str:
+    res = requests.get(url=(vpic + "vehicles/decodevin/{}?format=json".format(v)))
+    res = res.json()
+    year = res.get('Results')[10].get('Value')
+    make = res.get('Results')[7].get('Value')
+    model = res.get('Results')[9].get('Value')
+    return "{} {} {}".format(year, make, model)
 
 def get_wiki_page(q: str) -> dict:
     language_code = 'en'

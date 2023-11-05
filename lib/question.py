@@ -6,5 +6,5 @@ class Question:
         self.next_questions = next_questions
         self.answer_effects = answer_effects  # This is a new list containing the effects of each answer
 
-    def is_branch_start(question_id: str) -> bool:
-        return "." not in question_id
+    def is_branch_start(question_id: float) -> bool:
+        return int(question_id) == question_id
