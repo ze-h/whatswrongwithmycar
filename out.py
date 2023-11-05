@@ -1,1 +1,0 @@
-https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Bagel_with_sesame_3.jpg/60px-Bagel_with_sesame_3.jpg
