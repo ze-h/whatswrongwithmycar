@@ -101,3 +101,8 @@ class VehicleIssues:
         self.faulty_fuel_tank_sender = float(0)
         self.failed_emission_test = float(0)
 
+        def update_issue_probabilities(self, effects: dict):
+            for issue, change in effects.items():
+                if hasattr(self, issue):
+                    setattr(self, issue, getattr(self, issue) + change)
+
