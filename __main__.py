@@ -17,7 +17,7 @@ class MyWindow(QWidget):
         super().__init__()
         self.setWindowTitle("What's Wrong With My Car?")
         self.setFixedSize(400, 300)
-    
+        
         # Create a layout
         layout = QVBoxLayout()
 

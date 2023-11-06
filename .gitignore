@@ -8,3 +8,4 @@ env/
 *.svg
 *.jpeg
 *.webp
+lib/keyring/wikipedia
