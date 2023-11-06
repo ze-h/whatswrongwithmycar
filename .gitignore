@@ -2,10 +2,5 @@
 __pycache__/
 *.pyc
 env/
-*.png
-*.gif
-*.jpg
-*.svg
-*.jpeg
-*.webp
 lib/keyring/wikipedia
+cache/*
