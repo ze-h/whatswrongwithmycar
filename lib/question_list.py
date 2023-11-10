@@ -2,7 +2,6 @@ from question import Question
 
 q1 = Question(1, "", [], [], [])
 q1_1 = Question(1.1, "", [], [], [])
-q1_11 = Question(1.11, "", [], [], [])
 q2 = Question(2, "", [], [], [])
 q2_1 = Question(2.1, "", [], [], [])
 q2_2 = Question(2.2, "", [], [], [])
