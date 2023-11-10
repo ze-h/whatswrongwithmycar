@@ -1,6 +1,6 @@
 ﻿ID,question,a0,a1,a2,a3,a4,a5,a6,a7,ra0,ra1,ra2,ra3,ra4,ra5,ra6,ra7
-1,Is there an illuminated warning light on your dashboard?,Yes,No,,,,,,,1.1000000000000001,,,,,,,
-1.1000000000000001,Which light is on?,Check Engine,Battery,Oil,Brakes,Airbag,Tire Pressure,Temperature Warning,,,,,,,,,
+1,Is there an illuminated warning light on your dashboard?,Yes,No,,,,,,,1.11,,,,,,,
+1.11,Which light is on?,Check Engine,Battery,Oil,Brakes,Airbag,Tire Pressure,Temperature Warning,,,,,,,,,
 2,Does the car have trouble starting or doesn't start at all?,Yes,No,,,,,,,,,,,,,,
 3,Does the car make unusual noises or vibrations?,,,,,,,,,,,,,,,,
 4,Are there issues while driving?,,,,,,,,,,,,,,,,
