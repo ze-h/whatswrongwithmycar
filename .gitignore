@@ -4,5 +4,3 @@ __pycache__/
 env/
 lib/keyring/wikipedia
 cache/*
-secret.jpg
-#^ shhhhh

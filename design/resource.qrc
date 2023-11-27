@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="images">
+    <file>../images/secret.jpg</file>
+    <file>../images/check_engine.jpg</file>
+  </qresource>
+</RCC>
