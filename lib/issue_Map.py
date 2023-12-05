@@ -1,15 +1,24 @@
+from Problems import VehicleIssues
 
-answer_effects = {
-    #THIS IS AN EXAMPLE
-    "q1": {
-        0: {  # Corresponds to "Yes"
-            "faulty_starter": 0.2,  # Increase the probability by 20%
-            "bad_ignition_switch": 0.1  # Increase the probability by 10%
-        },
-        1: {  # Corresponds to "No"
-            "dead_battery": 0.5  # Increase the probability by 50%
-        }
-    }
+v = VehicleIssues
 
-}
+def mod_issue(q, a):
+    match q:
+        case 1:
+            if a == 1:
+                v.modify(v, "sample problem", 0.2)
+            else:
+                v.modify(v, "sample problem", -1)
+        case 1.1:
+            if a == 0:
+                v.modify()
+            elif a == 1:
+                v.modify()
+        case 1.11:
+            if a == 0:
+                v.modify()
+            elif a == 1:
+                v.modify()
+        
+            
 
