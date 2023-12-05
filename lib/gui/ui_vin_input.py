@@ -8,13 +8,15 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
+from fileinput import filename
 from lib.fetch import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
+#import __main__
+import lib.gui.ui_main as ui_main
 
-
-class Ui_Dialog(object):
+class Ui_Dialog(QDialog):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
@@ -38,10 +40,15 @@ class Ui_Dialog(object):
         self.label = QLabel(Dialog)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(30, 70, 161, 17))
-
         self.retranslateUi(Dialog)
         self.buttonBox.accepted.connect(Dialog.accept)
         self.buttonBox.rejected.connect(Dialog.reject)
+        rst = self.buttonBox.button(QDialogButtonBox.Reset)
+        # rst.clicked.connect(self.reset())
+
+        self.msg = QMessageBox()
+        self.msg.setWindowTitle("What's Wrong With My Car?")
+        self.msg.setText("Please enter a valid VIN number.")
 
         QMetaObject.connectSlotsByName(Dialog)
     # setupUi
@@ -53,4 +60,24 @@ class Ui_Dialog(object):
         self.lineEdit.setPlaceholderText(QCoreApplication.translate("Dialog", u"VIN Number", None))
         self.label.setText(QCoreApplication.translate("Dialog", u"Enter Your VIN Number:", None))
     # retranslateUi
+    
+    def reset(self):
+        self.lineEdit.setText("")
+        
+    def accept(self) -> None:
+        #action if submit is clicked
+        text = self.lineEdit.text()
+        if text == "":
+            self.msg.exec()
+        else:
+            car = get_car(text)
+            if car != "None None None":
+                #get the picture
+                filename = download_file(get_image_url(get_wiki_page(car)))
+                super().accept()
+                return filename
+            else:
+                self.msg.exec()
+                
+
 

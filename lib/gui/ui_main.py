@@ -12,8 +12,9 @@ from lib.fetch import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
+import lib.gui.ui_vin_input as ui_vin_input
 
-class Ui_MainWindow(object):
+class Ui_MainWindow(QMainWindow):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
@@ -22,7 +23,9 @@ class Ui_MainWindow(object):
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
+        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         MainWindow.setSizePolicy(sizePolicy)
+        self.setFixedSize(800, 600)
         self.actionAbout = QAction(MainWindow)
         self.actionAbout.setObjectName(u"actionAbout")
         self.centralwidget = QWidget(MainWindow)
@@ -100,6 +103,15 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
         self.menuHelp.addAction(self.actionAbout)
 
+        self.vin_dialog = QInputDialog(MainWindow)
+        self.msg = QMessageBox()
+        self.msg.setWindowTitle("What's Wrong With My Car?")
+        self.msg.setText("Please enter a valid VIN number.")
+        
+        self.abt_msg = QMessageBox()
+        self.abt_msg.setWindowTitle("What's Wrong With My Car?")
+        self.abt_msg.setText(u"<html><head/><body><p>Created by Ziad El-Hefnawy, Nicole Schmitt, Dawson Gomez, and Illia Biblyi.</p><p>Copyright 2023.</p><p>Created with PyQT5</p></body></html>")
+
         self.retranslateUi(MainWindow)
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -122,3 +134,17 @@ class Ui_MainWindow(object):
         self.menuHelp.setTitle(QCoreApplication.translate("MainWindow", u"Help", None))
     # retranslateUi
 
+    def show(self) -> None:
+        filename = ""
+        text = self.vin_dialog.getText(self, "What's Wrong With My Car?", "Input VIN number")[0]
+        car = get_car(text)
+        filename = download_file(get_image_url(get_wiki_page(car)))
+        pmap = QPixmap(filename).scaled(361, 300, Qt.KeepAspectRatio)
+        self.label_2.setPixmap(pmap)
+        print(text)
+        print(car)
+        print(filename)
+        return super().show()
+    
+    def actionAbout(self) -> None:
+        return self.abt_msg.show()
