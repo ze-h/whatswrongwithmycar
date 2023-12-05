@@ -1,6 +1,6 @@
 class VehicleIssues:
     def __init__(self):
-        self.problemlist = {
+        self.problemlist: dict[str, float] = {
             "dead_battery ": 0,
             "faulty_starter ": 0,
             "bad_ignition_switch ": 0,
