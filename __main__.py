@@ -5,6 +5,7 @@ from lib.question import Question
 from lib.question_list import qlist
 
 def main():
+    qlist.sort(key= lambda x : x.question_id)
     app = QApplication(sys.argv)
     window = lib.gui.ui_main.Ui_MainWindow()
     window.setupUi(window)

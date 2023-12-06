@@ -13,11 +13,12 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 import lib.gui.ui_vin_input as ui_vin_input
+from lib.question import Question
 
 class Ui_MainWindow(QMainWindow):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
-            MainWindow.setObjectName(u"MainWindow")
+            MainWindow.setObjectName(u"What's Wrong With My Car?")
         MainWindow.resize(800, 600)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -44,45 +45,45 @@ class Ui_MainWindow(QMainWindow):
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.radioButton_2 = QRadioButton(self.verticalLayoutWidget)
-        self.radioButton_2.setObjectName(u"radioButton_2")
+        self.rb_choice1 = QRadioButton(self.verticalLayoutWidget)
+        self.rb_choice1.setObjectName(u"rb_choice1")
 
-        self.verticalLayout.addWidget(self.radioButton_2)
+        self.verticalLayout.addWidget(self.rb_choice1)
 
-        self.radioButton_7 = QRadioButton(self.verticalLayoutWidget)
-        self.radioButton_7.setObjectName(u"radioButton_7")
+        self.rb_choice2 = QRadioButton(self.verticalLayoutWidget)
+        self.rb_choice2.setObjectName(u"rb_choice2")
 
-        self.verticalLayout.addWidget(self.radioButton_7)
+        self.verticalLayout.addWidget(self.rb_choice2)
 
-        self.radioButton_8 = QRadioButton(self.verticalLayoutWidget)
-        self.radioButton_8.setObjectName(u"radioButton_8")
+        self.rb_choice3 = QRadioButton(self.verticalLayoutWidget)
+        self.rb_choice3.setObjectName(u"rb_choice3")
 
-        self.verticalLayout.addWidget(self.radioButton_8)
+        self.verticalLayout.addWidget(self.rb_choice3)
 
-        self.radioButton_3 = QRadioButton(self.verticalLayoutWidget)
-        self.radioButton_3.setObjectName(u"radioButton_3")
+        self.rb_choice4 = QRadioButton(self.verticalLayoutWidget)
+        self.rb_choice4.setObjectName(u"rb_choice4")
 
-        self.verticalLayout.addWidget(self.radioButton_3)
+        self.verticalLayout.addWidget(self.rb_choice4)
 
-        self.radioButton_6 = QRadioButton(self.verticalLayoutWidget)
-        self.radioButton_6.setObjectName(u"radioButton_6")
+        self.rb_choice5 = QRadioButton(self.verticalLayoutWidget)
+        self.rb_choice5.setObjectName(u"rb_choice5")
 
-        self.verticalLayout.addWidget(self.radioButton_6)
+        self.verticalLayout.addWidget(self.rb_choice5)
 
-        self.radioButton_5 = QRadioButton(self.verticalLayoutWidget)
-        self.radioButton_5.setObjectName(u"radioButton_5")
+        self.rb_choice6 = QRadioButton(self.verticalLayoutWidget)
+        self.rb_choice6.setObjectName(u"rb_choice6")
 
-        self.verticalLayout.addWidget(self.radioButton_5)
+        self.verticalLayout.addWidget(self.rb_choice6)
 
-        self.radioButton_4 = QRadioButton(self.verticalLayoutWidget)
-        self.radioButton_4.setObjectName(u"radioButton_4")
+        self.rb_choice7 = QRadioButton(self.verticalLayoutWidget)
+        self.rb_choice7.setObjectName(u"rb_choice7")
 
-        self.verticalLayout.addWidget(self.radioButton_4)
+        self.verticalLayout.addWidget(self.rb_choice7)
 
-        self.radioButton = QRadioButton(self.verticalLayoutWidget)
-        self.radioButton.setObjectName(u"radioButton")
+        self.rb_choice8 = QRadioButton(self.verticalLayoutWidget)
+        self.rb_choice8.setObjectName(u"rb_choice8")
 
-        self.verticalLayout.addWidget(self.radioButton)
+        self.verticalLayout.addWidget(self.rb_choice8)
 
         self.pushButton = QPushButton(self.verticalLayoutWidget)
         self.pushButton.setObjectName(u"pushButton")
@@ -122,14 +123,14 @@ class Ui_MainWindow(QMainWindow):
         self.actionAbout.setText(QCoreApplication.translate("MainWindow", u"About", None))
         self.label.setText("")
         self.label_2.setText("")
-        self.radioButton_2.setText(QCoreApplication.translate("MainWindow", u"Choice1", None))
-        self.radioButton_7.setText(QCoreApplication.translate("MainWindow", u"Choice2", None))
-        self.radioButton_8.setText(QCoreApplication.translate("MainWindow", u"Choice3", None))
-        self.radioButton_3.setText(QCoreApplication.translate("MainWindow", u"Choice4", None))
-        self.radioButton_6.setText(QCoreApplication.translate("MainWindow", u"Choice5", None))
-        self.radioButton_5.setText(QCoreApplication.translate("MainWindow", u"Choice6", None))
-        self.radioButton_4.setText(QCoreApplication.translate("MainWindow", u"Choice7", None))
-        self.radioButton.setText(QCoreApplication.translate("MainWindow", u"Choice8", None))
+        self.rb_choice1.setText(QCoreApplication.translate("MainWindow", u"Choice1", None))
+        self.rb_choice2.setText(QCoreApplication.translate("MainWindow", u"Choice2", None))
+        self.rb_choice3.setText(QCoreApplication.translate("MainWindow", u"Choice3", None))
+        self.rb_choice4.setText(QCoreApplication.translate("MainWindow", u"Choice4", None))
+        self.rb_choice5.setText(QCoreApplication.translate("MainWindow", u"Choice5", None))
+        self.rb_choice6.setText(QCoreApplication.translate("MainWindow", u"Choice6", None))
+        self.rb_choice7.setText(QCoreApplication.translate("MainWindow", u"Choice7", None))
+        self.rb_choice8.setText(QCoreApplication.translate("MainWindow", u"Choice8", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Submit", None))
         self.menuHelp.setTitle(QCoreApplication.translate("MainWindow", u"Help", None))
     # retranslateUi
@@ -145,6 +146,57 @@ class Ui_MainWindow(QMainWindow):
         print(car)
         print(filename)
         return super().show()
+    
+    def display_question(self, q: Question):
+        self.label.setText(q.text)
+        if q.answers[0] == "":
+            self.rb_choice1.setEnabled(False)
+        else:
+            self.rb_choice1.setEnabled(True)
+            self.rb_choice1.setText(q.answers[0])
+            
+        if q.answers[1] == "":
+            self.rb_choice2.setEnabled(False)
+        else:
+            self.rb_choice2.setEnabled(True)
+            self.rb_choice2.setText(q.answers[1])
+            
+        if q.answers[2] == "":
+            self.rb_choice3.setEnabled(False)
+        else:
+            self.rb_choice3.setEnabled(True)
+            self.rb_choice3.setText(q.answers[2])
+            
+        if q.answers[3] == "":
+            self.rb_choice4.setEnabled(False)
+        else:
+            self.rb_choice4.setEnabled(True)
+            self.rb_choice4.setText(q.answers[3])
+            
+        if q.answers[4] == "":
+            self.rb_choice5.setEnabled(False)
+        else:
+            self.rb_choice5.setEnabled(True)
+            self.rb_choice5.setText(q.answers[4])
+            
+        if q.answers[5] == "":
+            self.rb_choice6.setEnabled(False)
+        else:
+            self.rb_choice6.setEnabled(True)
+            self.rb_choice6.setText(q.answers[5])
+            
+        if q.answers[6] == "":
+            self.rb_choice7.setEnabled(False)
+        else:
+            self.rb_choice7.setEnabled(True)
+            self.rb_choice7.setText(q.answers[6])
+            
+        if q.answers[7] == "":
+            self.rb_choice8.setEnabled(False)
+        else:
+            self.rb_choice8.setEnabled(True)
+            self.rb_choice8.setText(q.answers[7])
+
     
     def actionAbout(self) -> None:
         return self.abt_msg.show()
