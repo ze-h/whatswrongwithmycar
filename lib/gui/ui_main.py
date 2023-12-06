@@ -8,6 +8,7 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
+import __main__
 from lib.fetch import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
@@ -144,57 +145,35 @@ class Ui_MainWindow(QMainWindow):
         print(text)
         print(car)
         print(filename)
-        return super().show()
+        super().show()
+        return __main__.question_manager(self)
     
     def display_question(self, q: Question):
         self.label.setText(q.text)
-        if q.answers[0] == "":
-            self.rb_choice1.setEnabled(False)
-        else:
-            self.rb_choice1.setEnabled(True)
-            self.rb_choice1.setText(q.answers[0])
+        
+        self.rb_choice1.setEnabled(q.answers[0] != "")
+        self.rb_choice1.setText(q.answers[0])
+        
+        self.rb_choice2.setEnabled(q.answers[1] != "")
+        self.rb_choice2.setText(q.answers[1])
             
-        if q.answers[1] == "":
-            self.rb_choice2.setEnabled(False)
-        else:
-            self.rb_choice2.setEnabled(True)
-            self.rb_choice2.setText(q.answers[1])
+        self.rb_choice3.setEnabled(q.answers[2] != "")
+        self.rb_choice3.setText(q.answers[2])
             
-        if q.answers[2] == "":
-            self.rb_choice3.setEnabled(False)
-        else:
-            self.rb_choice3.setEnabled(True)
-            self.rb_choice3.setText(q.answers[2])
+        self.rb_choice4.setEnabled(q.answers[3] != "")
+        self.rb_choice4.setText(q.answers[3])
             
-        if q.answers[3] == "":
-            self.rb_choice4.setEnabled(False)
-        else:
-            self.rb_choice4.setEnabled(True)
-            self.rb_choice4.setText(q.answers[3])
+        self.rb_choice5.setEnabled(q.answers[4] != "")
+        self.rb_choice5.setText(q.answers[4])
+        
+        self.rb_choice6.setEnabled(q.answers[5] != "")
+        self.rb_choice6.setText(q.answers[5])
             
-        if q.answers[4] == "":
-            self.rb_choice5.setEnabled(False)
-        else:
-            self.rb_choice5.setEnabled(True)
-            self.rb_choice5.setText(q.answers[4])
-            
-        if q.answers[5] == "":
-            self.rb_choice6.setEnabled(False)
-        else:
-            self.rb_choice6.setEnabled(True)
-            self.rb_choice6.setText(q.answers[5])
-            
-        if q.answers[6] == "":
-            self.rb_choice7.setEnabled(False)
-        else:
-            self.rb_choice7.setEnabled(True)
-            self.rb_choice7.setText(q.answers[6])
-            
-        if q.answers[7] == "":
-            self.rb_choice8.setEnabled(False)
-        else:
-            self.rb_choice8.setEnabled(True)
-            self.rb_choice8.setText(q.answers[7])
+        self.rb_choice7.setText(q.answers[6])
+        self.rb_choice7.setEnabled(q.answers[5] != "")
+        
+        self.rb_choice8.setText(q.answers[7])
+        self.rb_choice8.setEnabled(q.answers[7] != "")
 
     
     def actionAbout(self) -> None:
