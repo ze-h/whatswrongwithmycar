@@ -1,7 +1,17 @@
-#this file is for ending the program
 
-#Print statement about end of program and trhat the problems are the following
+from Problems import VehicleIssues
+V = VehicleIssues
 
-#create list of problems from highest float value to lowest
+def summarize_vehicle_issues(V):
 
-#pull first 3 from list and print names with probabilities
+    # Print end of program statement
+    print("End of program. The top three vehicle issues with their probabilities are as follows:")
+
+    # Sort the problems by their float values in descending order
+    sorted_problems = sorted(V.problemlist.items(), key=lambda x: x[1], reverse=True)
+
+    # Print the first three problems
+    for problem, value in sorted_problems[:3]:
+        print(f"{problem}: {value}")
+
+summarize_vehicle_issues(V)
