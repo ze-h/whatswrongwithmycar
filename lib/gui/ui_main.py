@@ -12,7 +12,6 @@ from lib.fetch import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-import lib.gui.ui_vin_input as ui_vin_input
 from lib.question import Question
 
 class Ui_MainWindow(QMainWindow):
