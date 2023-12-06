@@ -87,7 +87,7 @@ class Ui_MainWindow(QMainWindow):
 
         self.pushButton = QPushButton(self.verticalLayoutWidget)
         self.pushButton.setObjectName(u"pushButton")
-
+        
         self.verticalLayout.addWidget(self.pushButton)
 
         MainWindow.setCentralWidget(self.centralwidget)
@@ -136,6 +136,18 @@ class Ui_MainWindow(QMainWindow):
         self.menuHelp.setTitle(QCoreApplication.translate("MainWindow", u"Help", None))
     # retranslateUi
 
+    def submit_answer(self) -> None:
+        send = lambda x : __main__.question_answer_demo(self, self.currentQuestion, x)
+        
+        if self.rb_choice1.isChecked(): return send(0)
+        if self.rb_choice2.isChecked(): return send(1)
+        if self.rb_choice3.isChecked(): return send(2)
+        if self.rb_choice4.isChecked(): return send(3)
+        if self.rb_choice5.isChecked(): return send(4)
+        if self.rb_choice6.isChecked(): return send(5)
+        if self.rb_choice7.isChecked(): return send(6)
+        if self.rb_choice8.isChecked(): return send(7)
+        
     def show(self) -> None:
         filename = ""
         text = self.vin_dialog.getText(self, "What's Wrong With My Car?", "Input VIN number")[0]
@@ -146,8 +158,10 @@ class Ui_MainWindow(QMainWindow):
         print(text)
         print(car)
         print(filename)
+        self.pushButton.clicked.connect(self.submit_answer)
         super().show()
-        return __main__.question_manager(self)
+        #return __main__.question_manager(self)
+        return __main__.question_manager_demo(self)
     
     def display_question(self, q: Question):
         self.currentQuestion = q
@@ -177,17 +191,6 @@ class Ui_MainWindow(QMainWindow):
         
         self.rb_choice8.setText(q.answers[7])
         self.rb_choice8.setEnabled(q.answers[7] != "")
-
-    def submit_answer(self) -> None:
-        if self.rb_choice1.isChecked(): return 0
-        if self.rb_choice2.isChecked(): return 1
-        if self.rb_choice3.isChecked(): return 2
-        if self.rb_choice4.isChecked(): return 3
-        if self.rb_choice5.isChecked(): return 4
-        if self.rb_choice6.isChecked(): return 5
-        if self.rb_choice7.isChecked(): return 6
-        if self.rb_choice8.isChecked(): return 7
-        return -1
     
     def actionAbout(self) -> None:
         return self.abt_msg.show()

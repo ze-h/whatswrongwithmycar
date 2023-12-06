@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import QApplication
 from lib.question import Question
 import csv
 
+fin_q = list()
 qlist = list()
 with open('questions.csv') as file_obj:
     reader_obj = csv.reader(file_obj)
@@ -24,6 +25,19 @@ def main():
     window.show()
     app.exec()
 
+def question_manager_demo(window: lib.gui.ui_main.Ui_MainWindow, q: Question=qlist[1]):
+    window.display_question(q)
+    
+def question_answer_demo(window: lib.gui.ui_main.Ui_MainWindow, question: Question, answer: int):
+    nq = get_question(question.answers[answer])
+    if nq == None:
+        i = 1
+        while nq != None and nq not in fin_q and "." not in nq.question_id:
+            nq = qlist[i]
+            i += 1
+        return question_manager_demo(window, qlist[randint(0, len(qlist))])
+    return question_manager_demo(window, nq)
+    
 def question_manager(window: lib.gui.ui_main.Ui_MainWindow, q: Question=qlist[0]):
     window.display_question(q)
     

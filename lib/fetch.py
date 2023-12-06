@@ -1,6 +1,6 @@
 import json
 import requests
-from vehicle import Vehicle
+from lib.vehicle import Vehicle
 
 vpic = "https://vpic.nhtsa.dot.gov/api/"
 wiki_key = open("./lib/keyring/wikipedia", 'r').read()
