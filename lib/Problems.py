@@ -1,7 +1,7 @@
 class VehicleIssues:
     def __init__(self):
         self.problemlist: dict[str, float] = {
-            "dead_battery ": 0,
+            "dead_battery ": 0.92,
             "faulty_starter ": 0,
             "bad_ignition_switch ": 0,
             "fuel_supply_issue ": 0,
@@ -32,8 +32,8 @@ class VehicleIssues:
             "warped_rotors ": 0,
             "faulty_steering_mechanism ": 0,
             "faulty_alternator ": 0,
-            "corroded_battery_terminals ": 0,
-            "blown_fuse ": 0,
+            "corroded_battery_terminals ": 0.84,
+            "blown_fuse ": 0.7,
             "faulty_brake_booster ": 0,
             "damaged_CV_joints ": 0,
             "malfunctioning_mass_air_flow_sensor ": 0,
