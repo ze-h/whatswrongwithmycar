@@ -113,6 +113,10 @@ class Ui_MainWindow(QMainWindow):
         self.abt_msg.setWindowTitle("What's Wrong With My Car?")
         self.abt_msg.setText(u"<html><head/><body><p>Created by Ziad El-Hefnawy, Nicole Schmitt, Dawson Gomez, and Illia Biblyi.</p><p>Copyright 2023.</p><p>Created with PyQT5</p></body></html>")
 
+        self.final_msg = QMessageBox()
+        self.final_msg.setWindowTitle("What's Wrong With My Car?")
+        self.abt_msg.setText("meek_mill.jpg")
+        
         self.retranslateUi(MainWindow)
         self.currentQuestion = None
 
@@ -191,6 +195,21 @@ class Ui_MainWindow(QMainWindow):
         
         self.rb_choice8.setText(q.answers[7])
         self.rb_choice8.setEnabled(q.answers[7] != "")
+    
+    def end(self) -> None:
+        from lib.Problems import VehicleIssues as V
+        # Print end of program statement
+        string = "End of program. The top three vehicle issues with their probabilities are as follows:"
+
+        # Sort the problems by their float values in descending order
+        sorted_problems = sorted(V.problemlist.items(), key=lambda x: x[1], reverse=True)
+
+        # Print the first three problems
+        for problem, value in sorted_problems[:3]:
+            string += f"{problem}: {value}"
+        self.final_msg.setText(string)
+        self.final_msg.show()
+        return self.close()
     
     def actionAbout(self) -> None:
         return self.abt_msg.show()

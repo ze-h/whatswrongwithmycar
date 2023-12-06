@@ -29,7 +29,8 @@ def question_manager_demo(window: lib.gui.ui_main.Ui_MainWindow, q: Question=qli
     window.display_question(q)
     
 def question_answer_demo(window: lib.gui.ui_main.Ui_MainWindow, question: Question, answer: int):
-    nq = get_question(question.answers[answer])
+    if question.next_questions[0] == "fin": return window.end()
+    nq = get_question(question.next_questions[answer])
     if nq == None:
         i = 1
         while nq != None and nq not in fin_q and "." not in nq.question_id:
@@ -42,6 +43,7 @@ def question_manager(window: lib.gui.ui_main.Ui_MainWindow, q: Question=qlist[0]
     window.display_question(q)
     
 def question_answer(window: lib.gui.ui_main.Ui_MainWindow, question: Question, answer: int):
+    if question.next_questions[0] == "fin": return window.end()
     nq = get_question(question.answers[answer])
     if nq == None:
         return question_manager(window, qlist[randint(0, len(qlist))])
