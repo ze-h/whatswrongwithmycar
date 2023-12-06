@@ -114,6 +114,7 @@ class Ui_MainWindow(QMainWindow):
         self.abt_msg.setText(u"<html><head/><body><p>Created by Ziad El-Hefnawy, Nicole Schmitt, Dawson Gomez, and Illia Biblyi.</p><p>Copyright 2023.</p><p>Created with PyQT5</p></body></html>")
 
         self.retranslateUi(MainWindow)
+        self.currentQuestion = None
 
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
@@ -149,6 +150,8 @@ class Ui_MainWindow(QMainWindow):
         return __main__.question_manager(self)
     
     def display_question(self, q: Question):
+        self.currentQuestion = q
+        
         self.label.setText(q.text)
         
         self.rb_choice1.setEnabled(q.answers[0] != "")
@@ -175,6 +178,16 @@ class Ui_MainWindow(QMainWindow):
         self.rb_choice8.setText(q.answers[7])
         self.rb_choice8.setEnabled(q.answers[7] != "")
 
+    def submit_answer(self) -> None:
+        if self.rb_choice1.isChecked(): return 0
+        if self.rb_choice2.isChecked(): return 1
+        if self.rb_choice3.isChecked(): return 2
+        if self.rb_choice4.isChecked(): return 3
+        if self.rb_choice5.isChecked(): return 4
+        if self.rb_choice6.isChecked(): return 5
+        if self.rb_choice7.isChecked(): return 6
+        if self.rb_choice8.isChecked(): return 7
+        return -1
     
     def actionAbout(self) -> None:
         return self.abt_msg.show()
