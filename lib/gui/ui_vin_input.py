@@ -70,7 +70,7 @@ class Ui_Dialog(QDialog):
         if text == "":
             self.msg.exec()
         else:
-            car = get_car(text)
+            car = get_car(text).to_string()
             if car != "None None None":
                 #get the picture
                 filename = download_file(get_image_url(get_wiki_page(car)))

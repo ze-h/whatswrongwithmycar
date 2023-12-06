@@ -139,7 +139,7 @@ class Ui_MainWindow(QMainWindow):
     def show(self) -> None:
         filename = ""
         text = self.vin_dialog.getText(self, "What's Wrong With My Car?", "Input VIN number")[0]
-        car = get_car(text)
+        car = get_car(text).to_string()
         filename = download_file(get_image_url(get_wiki_page(car)))
         pmap = QPixmap(filename).scaled(361, 300, Qt.KeepAspectRatio)
         self.label_2.setPixmap(pmap)

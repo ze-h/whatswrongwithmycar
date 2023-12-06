@@ -1,18 +1,18 @@
 import json
 import requests
-#from vehicle import Vehicle
+from vehicle import Vehicle
 
 vpic = "https://vpic.nhtsa.dot.gov/api/"
 wiki_key = open("./lib/keyring/wikipedia", 'r').read()
 
 #get the year, make, and model of a vin as a string
-def get_car(v: str) -> str:
+def get_car(v: str) -> Vehicle:
     res = requests.get(url=(vpic + "vehicles/decodevin/{}?format=json".format(v)))
     res = res.json()
     year = res.get('Results')[10].get('Value')
     make = res.get('Results')[7].get('Value')
     model = res.get('Results')[9].get('Value')
-    return "{} {} {}".format(year, make, model)
+    return Vehicle(year, make, model)
 
 #get a wikipedia page based on search query as a json
 def get_wiki_page(q: str) -> dict:
