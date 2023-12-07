@@ -170,7 +170,7 @@ class Ui_MainWindow(QMainWindow):
     # retranslateUi
 
     def submit_answer(self) -> None:
-        send = lambda x: __main__.question_answer_demo(self, self.currentQuestion, x)
+        send = lambda x: __main__.question_answer(self, self.currentQuestion, x)
 
         if self.rb_choice1.isChecked():
             return send(0)
@@ -205,7 +205,7 @@ class Ui_MainWindow(QMainWindow):
         self.pushButton.clicked.connect(self.submit_answer)
         super().show()
         # return __main__.question_manager(self)
-        return __main__.question_manager_demo(self)
+        return __main__.question_manager(self)
 
     def display_question(self, q: Question):
         self.currentQuestion = q

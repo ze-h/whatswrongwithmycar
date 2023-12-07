@@ -8,13 +8,10 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from fileinput import filename
 from lib.fetch import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-#import __main__
-import lib.gui.ui_main as ui_main
 
 class Ui_Dialog(QDialog):
     def setupUi(self, Dialog):

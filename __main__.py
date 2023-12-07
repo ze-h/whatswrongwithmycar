@@ -25,10 +25,10 @@ def main():
     window.show()
     app.exec()
 
-def question_manager_demo(window: lib.gui.ui_main.Ui_MainWindow, q: Question=qlist[1]):
+def question_manager(window: lib.gui.ui_main.Ui_MainWindow, q: Question=qlist[1]):
     window.display_question(q)
     
-def question_answer_demo(window: lib.gui.ui_main.Ui_MainWindow, question: Question, answer: int):
+def question_answer(window: lib.gui.ui_main.Ui_MainWindow, question: Question, answer: int):
     if question.next_questions[0] == "fin": return window.end()
     nq = get_question(question.next_questions[answer])
     if nq == None:
@@ -36,16 +36,6 @@ def question_answer_demo(window: lib.gui.ui_main.Ui_MainWindow, question: Questi
         while nq != None and nq not in fin_q and "." not in nq.question_id:
             nq = qlist[i]
             i += 1
-        return question_manager_demo(window, qlist[randint(0, len(qlist))])
-    return question_manager_demo(window, nq)
-    
-def question_manager(window: lib.gui.ui_main.Ui_MainWindow, q: Question=qlist[0]):
-    window.display_question(q)
-    
-def question_answer(window: lib.gui.ui_main.Ui_MainWindow, question: Question, answer: int):
-    if question.next_questions[0] == "fin": return window.end()
-    nq = get_question(question.answers[answer])
-    if nq == None:
         return question_manager(window, qlist[randint(0, len(qlist))])
     return question_manager(window, nq)
     

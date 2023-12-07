@@ -1,5 +1,5 @@
 ﻿ID,question,a0,a1,a2,a3,a4,a5,a6,a7,ra0,ra1,ra2,ra3,ra4,ra5,ra6,ra7,img
-1,Is there an illuminated warning light on your dashboard?,Yes,No,,,,,,,1.11,2,,,,,,,./images/check_engine.jpg
+1,Is there an illuminated warning light on your dashboard?,Yes,No,,,,,,,1.11,2,,,,,,,
 1.11,Which light is on?,Check Engine,Battery,Oil,Brakes,Airbag,Tire Pressure,Temperature Warning,,2.1,2.1,2,2,2,2,2,2,./images/1.11.png
 2,Does the car have trouble starting or doesn't start at all?,Yes,No,,,,,,,,,,,,,,,
 3,Does the car make unusual noises or vibrations?,,,,,,,,,,,,,,,,,
@@ -35,4 +35,4 @@
 8.12,Are there any problems with the sound systems or horn?,Yes,No,,,,,,,16,16,,,,,,,
 16.1,Do you face any charging or battery issues?,Yes,No,,,,,,,23,23,,,,,,,
 23.1,Does the battery discharge quickly?,Yes,No,,,,,,,23.11,23.11,,,,,,,
-23.11,Do you notice any corrosion on the terminals?,Yes,No,,,,,,,fin,fin,,,,,,,
+23.11,Do you notice any corrosion on the terminals?,Yes,No,,,,,,,fin,fin,,,,,,,./images/battery.jpg
